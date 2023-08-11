@@ -18,13 +18,16 @@ class Auth:
                 return False
             elif path.startswith(excluded):
                 return False
+            elif excluded[-1] == '*':
+                if path.startswith(excluded[:-1]):
+                    return False
         return True
 
     def authorization_header(self, request=None) -> str:
         """return authorisation header from request"""
         if request is None:
             return None
-        return request.get('Authorization')
+        return request.headers.get('Authorizaton')
 
     def current_user(self, request=None) -> TypeVar('User'):
         """return current user from request"""
