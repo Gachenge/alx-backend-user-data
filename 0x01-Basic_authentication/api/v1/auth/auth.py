@@ -32,7 +32,6 @@ class Auth:
             return None
         return header
 
-
     def current_user(self, request=None) -> TypeVar('User'):
         """return current user from request"""
         return None
