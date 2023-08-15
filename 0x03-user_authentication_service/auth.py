@@ -105,9 +105,10 @@ class Auth:
             ValueError: _description_
         """
         try:
-            user = self._db.find_user_by(reset_token=user.reset_token)
+            user = self._db.find_user_by(reset_token=reset_token)
         except NoResultFound:
             raise ValueError
         else:
             user.hashed_password = _hash_password(password)
             user.reset_token = None
+            return None
