@@ -9,13 +9,13 @@ AUTH = Auth()
 
 
 @app.route("/")
-def index():
+def index() -> str:
     """get the index route"""
     return jsonify({"message": "Bienvenue"})
 
 
 @app.route("/users", methods=['POST'])
-def users():
+def users() -> str:
     """register new users"""
     email = request.form.get("email")
     password = request.form.get("password")
@@ -46,7 +46,7 @@ def login() -> str:
 
 
 @app.route("/sessions", methods=['DELETE'])
-def logout():
+def logout() -> str:
     """_summary_
 
     Returns:
@@ -61,7 +61,7 @@ def logout():
 
 
 @app.route("/profile")
-def profile():
+def profile() -> str:
     """_summary_
 
     Returns:
@@ -76,7 +76,7 @@ def profile():
 
 
 @app.route("/reset_password", methods=['POST'])
-def reset_password():
+def reset_password() -> str:
     """_summary_
 
     Returns:
@@ -91,7 +91,7 @@ def reset_password():
 
 
 @app.route("/reset_password", methods=['PUT'])
-def reset_tokens():
+def reset_tokens() -> str:
     """_summary_
 
     Returns:
@@ -108,4 +108,4 @@ def reset_tokens():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port="5000")

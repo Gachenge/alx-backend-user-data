@@ -8,12 +8,12 @@ from user import User
 from uuid import uuid4
 
 
-def _hash_password(password):
+def _hash_password(password: str) -> bytes:
     """hash a user password"""
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
 
-def _generate_uuid():
+def _generate_uuid() -> str:
     """generate unique id"""
     return str(uuid4())
 
@@ -22,7 +22,7 @@ class Auth:
     """Auth class to interact with the authentication database.
     """
 
-    def __init__(self):
+    def __init__(self) -> DB:
         """_summary_
         """
         self._db = DB()
