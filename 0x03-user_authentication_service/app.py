@@ -29,6 +29,11 @@ def users():
 
 @app.route("/sessions", methods=['POST'])
 def login() -> str:
+    """_summary_
+
+    Returns:
+        str: _description_
+    """
     email = request.form.get("email")
     password = request.form.get("password")
     if AUTH.valid_login(email, password):
@@ -42,6 +47,11 @@ def login() -> str:
 
 @app.route("/sessions", methods=['DELETE'])
 def logout():
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     session_id = request.cookies.get("session_id")
     user = AUTH.get_user_from_session_id(session_id)
     if not user:
@@ -52,6 +62,11 @@ def logout():
 
 @app.route("/profile")
 def profile():
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     session_id = request.cookies.get("session_id")
     try:
         user = AUTH.get_user_from_session_id(session_id)
@@ -62,6 +77,11 @@ def profile():
 
 @app.route("/reset_password", methods=['POST'])
 def reset_password():
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     email = request.form.get('email')
     try:
         token = AUTH.get_reset_password_token(email)
@@ -72,6 +92,11 @@ def reset_password():
 
 @app.route("/reset_password", methods=['PUT'])
 def reset_tokens():
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     email = request.form.get("email")
     reset_token = request.form.get("reset_token")
     new_password = request.form.get("new_password")
