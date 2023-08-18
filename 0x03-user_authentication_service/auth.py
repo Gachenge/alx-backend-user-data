@@ -27,7 +27,7 @@ class Auth:
         """
         self._db = DB()
 
-    def register_user(self, email: str, password: str) -> Union[User, None]:
+    def register_user(self, email: str, password: str) -> User:
         """register a new user"""
         try:
             user = self._db.find_user_by(email=email)
