@@ -9,6 +9,9 @@ from sqlalchemy.orm.session import Session
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
 from user import Base, User
+import logging
+
+logging.disable(logging.INFO)
 
 
 class DB:
@@ -32,7 +35,7 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def _add_user(self, email: str, hashed_password: str) -> User:
+    def add_user(self, email: str, hashed_password: str) -> User:
         """create a new user and add to the database"""
         user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
