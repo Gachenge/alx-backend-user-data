@@ -29,7 +29,9 @@ def profile_unlogged() -> None:
 
 
 def profile_logged(session_id: str) -> None:
-    pass
+    user = auth.get_user_from_session_id(session_id=session_id)
+    if user:
+        return None
 
 
 def log_out(session_id: str) -> None:
